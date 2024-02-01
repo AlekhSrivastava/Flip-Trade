@@ -13,8 +13,6 @@ router.patch('/upDateCredit', async (req, res) => {
         return res.status(401).send({ message: 'mail not found' });
     }
     try {
-
-        console.log(user);
         user.balance += balance;
         user.loan += loan;
         await user.save();
