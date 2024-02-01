@@ -20,7 +20,7 @@ const HomeScreen = (props) => {
     const urlUpdate = 'http://192.168.0.103:3000/cardsRem';
     try {
       const newCrd = await axios.post(urlUpdate);
-      console.log(newCrd.data.message);
+      // console.log(newCrd.data.message);
       const { data } = await axios.get(urlCards);
       setWholedata(data);
     }
