@@ -7,7 +7,6 @@ import SignIn from './screens/SignInScreen';
 import Home from './screens/HomeScreen';
 import Loading from './screens/LoadingScreen';
 import UserScr from './screens/UserScreen';
-//import Test from './screens/Test';
 import Reloading from './screens/ReloadingScreen';
 function App() {
 
@@ -15,7 +14,6 @@ function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
-        {/* <Stack.Screen name='Test' component={Test}/> */}
         
         <Stack.Screen name='Loading' component={Loading} />
         <Stack.Screen name='Signup' component={SignUp} />
@@ -23,7 +21,6 @@ function App() {
         <Stack.Screen name='Home' component={Home} />
         <Stack.Screen name='Reloading' component={Reloading} />
         <Stack.Screen name='User' component={UserScr} />
-
 
       </Stack.Navigator>
     </NavigationContainer>
