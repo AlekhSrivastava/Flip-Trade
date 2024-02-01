@@ -10,6 +10,10 @@ const requireToken = require("../middleware/requireToken");
 router.post('/signup', async (req, res) => {
 
     const { email, password } = req.body;
+    const user = await User.findOne({ email }); 
+    if (user) {
+        return res.send({ message: 'user exist' })
+    }
     try {
         const user = new User({ email, password });
         await user.save()
@@ -18,7 +22,7 @@ router.post('/signup', async (req, res) => {
     }
     catch (err) {
         console.log(err);
-        res.send(err.message);
+        res.send(err);
     }
 })
 router.post('/signin', async (req, res) => {
@@ -29,7 +33,7 @@ router.post('/signin', async (req, res) => {
     }
     const user = await User.findOne({ email }); 
     if (!user) {
-        return res.status(401).send({ message: 'invalid email or password' })
+        return res.send({ message: 'invalid' })
     }
     try {
         await user.comparePassword(password);
@@ -42,7 +46,7 @@ router.post('/signin', async (req, res) => {
     }
 })
 // exporting it to the index page after middleware filtering
-router.get('/', requireToken, (req, res) => {
+router.get('/getUser', requireToken, (req, res) => {
     const {email,balance,loan} = req.user;
     res.send({email,balance,loan});
 });

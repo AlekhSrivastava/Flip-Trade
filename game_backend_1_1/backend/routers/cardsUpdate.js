@@ -39,7 +39,6 @@ router.post('/cardsRem', async (req, res) => {
 
     try {
         let cardleft = await Cardleft.findOne({ name });
-
         if (!cardleft) {
             const newCards = generateRandomArray();
             await Card.deleteMany();
@@ -50,65 +49,54 @@ router.post('/cardsRem', async (req, res) => {
             return res.send({ message: 'Cards updated' });
         }
 
-        if (cardleft.cardLeft === 1) {
+        if (cardleft.cardLeft === 0) {
             const newCards = generateRandomArray();
             await Card.deleteMany();
             await Card.insertMany(newCards);
 
             cardleft.cardLeft = 25;
-        } else {
-            cardleft.cardLeft -= 1;
+        } 
+        else {
+            const { _id } = req.body;
+            const cancelCard = await Card.findById(_id);
+            if (cancelCard && cancelCard.state === true) {
+                cancelCard.state = false;
+                await cancelCard.save();
+                cardleft.cardLeft -= 1;
+            } else {
+                return res.send({ message: 'Fetched' });
+            }
         }
 
         await cardleft.save();
-        res.send({ message: 'Cards updated' });
+        res.send({ cardLeft: cardleft.cardLeft });
     } catch (err) {
         console.error(err);
         res.status(500).send({ message: 'An error occurred' });
     }
-    /* const cardleft = await Cardleft.findOne({ name });
-    if (!cardleft) {
-        const newCards = generateRandomArray();
-        await Card.deleteMany();
-        await Card.insertMany(newCards);
-
-        const updatedCards = new Cardleft({ name, cardLeft });
-        await updatedCards.save();
-        return res.send({ message: 'Cards updated' })
-    }
-    try {
-
-        if (cardleft.cardLeft === 1) {
-            try {
-                const newCards = generateRandomArray();
-                await Card.deleteMany();
-                await Card.insertMany(newCards);
-
-                cardleft.cardLeft = 25;
-                await cardleft.save();
-                res.send({ message: 'Cards updated' });
-            }
-            catch (err) {
-                console.log(err);
-                res.send({ message: 'Data not available' });
-
-            }
-
-        }
-        else {
-
-            cardleft.cardLeft = (cardleft.cardLeft - 1);
-            await cardleft.save();
-            res.send({ message: 'Cards updated' });
-        }
-    }
-    catch (err) {
-        console.log(err);
-        res.send({ message: 'Data not availabe' });
-    } */
 });
 
-router.get('/cardStack',async (req, res) => {
+router.get('/refreshCard', async (req, res) => {
+
+    const name = 'cardsleft';
+    const cardLeft = 25;
+
+    try {
+        let refCard = await Cardleft.findOne({ name });
+        
+        if (refCard) {
+            return res.send(refCard);
+        } else {
+            refCard = new Cardleft({ name, cardLeft });
+            return res.send(refCard);
+        }
+    } catch (err) {
+        console.error(err);
+        return res.status(500).send('Internal Server Error');
+    }
+});
+
+router.get('/cardStack', async (req, res) => {
     try {
         const cardStk = await Card.find();
         res.send(cardStk);
