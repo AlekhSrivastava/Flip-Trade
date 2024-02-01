@@ -14,7 +14,6 @@ router.patch('/upDateCredit', async (req, res) => {
     }
     try {
 
-        console.log(user);
         user.balance += balance;
         user.loan += loan;
         await user.save();

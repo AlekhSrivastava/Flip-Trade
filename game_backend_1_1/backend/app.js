@@ -1,8 +1,12 @@
+require("dotenv").config();
+
+
 const express = require('express');
 const mongoose = require('mongoose');
 
 const { mongoUrl } = require('./keys');
 const port = process.env.PORT || 3000;
+const mUrl = process.env.MONGO_URL || mongoUrl;
 
 const user = require('./models/User')
 const requireToken = require ('./middleware/requireToken')
@@ -16,7 +20,7 @@ const cardsUpdate = require('./routers/cardsUpdate');
 const app = express();
 
 const dbName = 'game';
-mongoose.connect(mongoUrl, {
+mongoose.connect(mUrl, {
   dbName,
   useNewUrlParser: true,
   useUnifiedTopology: true
