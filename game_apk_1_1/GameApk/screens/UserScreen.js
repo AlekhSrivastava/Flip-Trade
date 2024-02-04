@@ -9,7 +9,8 @@ import { useNetInfo } from '@react-native-community/netinfo';
 
 
 const UserScreen = (props) => {
-    const baseUrl = 'https://chimerical-seahorse-63dfc9.netlify.app/.netlify/functions/api';
+    //const baseUrl = 'https://chimerical-seahorse-63dfc9.netlify.app/.netlify/functions/api';
+    const baseUrl = 'http://192.168.0.103:3000';
     
     const [email, setEmail] = useState('');
     const [balance, setBalance] = useState(0);
