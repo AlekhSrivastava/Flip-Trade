@@ -59,7 +59,7 @@ const SignInScreen = (props) => {
         return (
 
             <View style={{ backgroundColor: '#EAE4F1', flex: 1 }}>
-
+                <StatusBar backgroundColor="#50BDD2" barStyle="light-content" />
                 <View>
                     <View style={styles.headerView}>
                         <Text style={styles.headerTxt}>Welcome Back</Text>

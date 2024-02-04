@@ -85,6 +85,7 @@ const UserScreen = (props) => {
         fetchUserData();
         return (
             <View style={styles.container}>
+                <StatusBar backgroundColor="#50BDD2" barStyle="light-content" />
                 <View style={styles.ExButton}>
                     <Button mode="contained" style={styles.Exbtn} onPress={() => props.navigation.navigate('Home')}>
                         Exit
