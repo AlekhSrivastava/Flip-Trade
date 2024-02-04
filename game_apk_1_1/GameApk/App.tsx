@@ -22,7 +22,6 @@ function App() {
         <Stack.Screen name='Reloading' component={Reloading} />
         <Stack.Screen name='User' component={UserScr} />
 
-
       </Stack.Navigator>
     </NavigationContainer>
   );

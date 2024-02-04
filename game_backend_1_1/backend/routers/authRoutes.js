@@ -42,7 +42,7 @@ router.post('/signin', async (req, res) => {
     }
     catch (err) {
         console.log(err);
-        res.send({ message: 'invalid email or password' });
+        res.send({ message: 'invalid' });
     }
 })
 // exporting it to the index page after middleware filtering

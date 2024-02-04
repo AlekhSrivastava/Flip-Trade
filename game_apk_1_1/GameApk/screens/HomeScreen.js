@@ -12,15 +12,16 @@ import MidLoad from './MidLoadScreen';
 import Reloading from './ReloadingScreen';
 
 const HomeScreen = (props) => {
-
-  const urlCards = 'http://192.168.0.103:3000/cardStack';
+  //const baseUrl = 'https://chimerical-seahorse-63dfc9.netlify.app/.netlify/functions/api';
+  const baseUrl = 'http://192.168.0.103:3000';
+  
+  const urlCards = `${baseUrl}/cardStack`;
   const [wholedata, setWholedata] = useState([])
   const fetchCards = async () => {
     if (netInfo.isConnected === false) return;
-    const urlUpdate = 'http://192.168.0.103:3000/cardsRem';
+    const urlUpdate = `${baseUrl}/cardsRem`;
     try {
       const newCrd = await axios.post(urlUpdate);
-      // console.log(newCrd.data.message);
       const { data } = await axios.get(urlCards);
       setWholedata(data);
     }
@@ -33,7 +34,7 @@ const HomeScreen = (props) => {
 
   const refresh = async () => {
     if (netInfo.isConnected === false) return;
-    const refreshUrl = 'http://192.168.0.103:3000/refreshCard';
+    const refreshUrl = `${baseUrl}/refreshCard`;
     try {
       const { data } = await axios.get(refreshUrl);
       setPrev(data.cardLeft);
@@ -48,7 +49,7 @@ const HomeScreen = (props) => {
     if (netInfo.isConnected === false) return;
     try {
       const istoken = await AsyncStorage.getItem('token');
-      const urlUser = 'http://192.168.0.103:3000/getUser';
+      const urlUser = `${baseUrl}/getUser`;
       const { data } = await axios.get(urlUser, {
         headers: {
           'Authorization': 'Bearer ' + istoken
@@ -92,13 +93,13 @@ const HomeScreen = (props) => {
       }, 1000);
 
       const { _id } = item
-      const urlCancle = 'http://192.168.0.103:3000/cardsRem';
+      const urlCancle = `${baseUrl}/cardsRem`;
       if (item.state == true) {
         try {
           item.state = false;
           const { data } = await axios.post(urlCancle, { _id });
 
-          const urlUpdate = 'http://192.168.0.103:3000/upDateCredit';
+          const urlUpdate = `${baseUrl}/upDateCredit`;
 
           // have to add credit condition
           setHaveBalance(prevBalance => prevBalance - 4 + item.value)

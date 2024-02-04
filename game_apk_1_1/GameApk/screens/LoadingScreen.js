@@ -3,6 +3,7 @@ import { StatusBar, StyleSheet, View, Animated } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const LoadingScreen = (props) => {
+  
   const logoScale = useRef(new Animated.Value(0)).current;
 
   const moveHome = async () => {

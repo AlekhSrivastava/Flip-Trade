@@ -13,7 +13,9 @@ import MidLoad from './MidLoadScreen';
 import Reloading from './ReloadingScreen';
 
 const SignUpScreen = (props) => {
-
+    //const baseUrl = 'https://chimerical-seahorse-63dfc9.netlify.app/.netlify/functions/api';
+    const baseUrl = 'http://192.168.0.103:3000';
+    
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('')
     const [exist, setExist] = useState('')
@@ -21,7 +23,7 @@ const SignUpScreen = (props) => {
 
     const onboardClick = async () => {
         if (netInfo.isConnected === false) return;
-        const url = 'http://192.168.0.103:3000/signup';
+        const url = `${baseUrl}/signup`;
         try {
             if (email.length < 3) {
                 setExist('* Name too short');

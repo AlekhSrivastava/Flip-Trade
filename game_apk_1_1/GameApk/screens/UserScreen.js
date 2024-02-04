@@ -9,7 +9,8 @@ import { useNetInfo } from '@react-native-community/netinfo';
 
 
 const UserScreen = (props) => {
-
+    const baseUrl = 'https://chimerical-seahorse-63dfc9.netlify.app/.netlify/functions/api';
+    
     const [email, setEmail] = useState('');
     const [balance, setBalance] = useState(0);
     const [loan, setLoan] = useState(0);
@@ -19,7 +20,7 @@ const UserScreen = (props) => {
         if (netInfo.isConnected === false) return;
         try {
             if (balance == 0) {
-                const urlUpdate = 'http://192.168.0.103:3000/upDateCredit';
+                const urlUpdate = `${baseUrl}/upDateCredit`;
                 await axios.patch(urlUpdate, {
                     email: email,
                     balance: 100,
@@ -40,7 +41,7 @@ const UserScreen = (props) => {
         if (netInfo.isConnected === false) return;
         try {
             const istoken = await AsyncStorage.getItem('token');
-            const url = 'http://192.168.0.103:3000/getUser';
+            const url = `${baseUrl}/getUser`;
             if (istoken) {
                 const { data } = await axios.get(url, {
                     headers: {
