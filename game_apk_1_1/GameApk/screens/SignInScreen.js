@@ -5,6 +5,7 @@ import {
     StyleSheet,
     TouchableOpacity,
     View,
+    StatusBar,
 } from 'react-native';
 import { Button, TextInput,ActivityIndicator } from 'react-native-paper';
 import AsyncStorage from '@react-native-async-storage/async-storage';

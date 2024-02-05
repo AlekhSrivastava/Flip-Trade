@@ -1,5 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { View, StyleSheet, Text } from 'react-native';
+import {
+    View,
+    StyleSheet,
+    Text,
+    StatusBar
+} from 'react-native';
 import { Card, Title, Paragraph, Button, Divider } from 'react-native-paper';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
@@ -11,7 +16,7 @@ import { useNetInfo } from '@react-native-community/netinfo';
 const UserScreen = (props) => {
     const baseUrl = 'https://fliptradebackend.onrender.com';
     //const baseUrl = 'http://192.168.0.103:3000';
-    
+
     const [email, setEmail] = useState('');
     const [balance, setBalance] = useState(0);
     const [loan, setLoan] = useState(0);
