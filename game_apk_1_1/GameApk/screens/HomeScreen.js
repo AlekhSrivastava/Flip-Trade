@@ -198,6 +198,12 @@ const styles = StyleSheet.create({
     margin: 20,
     borderColor: '#FFFFFF'
   },
+  timer: {
+    fontSize: 70,
+    fontWeight: '900',
+    color: '#502080',
+    margin: 30,
+  },
   topLeft: {
     position: 'absolute',
     top: 20,
@@ -225,12 +231,6 @@ const styles = StyleSheet.create({
     fontSize: 23,
     fontWeight: '900',
     color: '#47246A',
-  },
-  timer: {
-    fontSize: 70,
-    fontWeight: '900',
-    color: '#502080',
-    margin: 30,
   },
   cred: {
     position: 'absolute',

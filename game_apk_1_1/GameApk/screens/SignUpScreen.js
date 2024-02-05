@@ -22,6 +22,7 @@ const SignUpScreen = (props) => {
     const [isloading, setIsloading] = useState(false)
 
     const onboardClick = async () => {
+
         if (netInfo.isConnected === false) return;
         const url = `${baseUrl}/signup`;
         try {
