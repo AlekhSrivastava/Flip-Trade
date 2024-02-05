@@ -183,6 +183,7 @@ const HomeScreen = (props) => {
             {isButtonDisabled ? <Text style={styles.timer}>GO!!</Text> : <Text style={styles.timer}>{seconds}</Text>}
           </View>
           {renderGrid()}
+          <Text style={{fontSize:12, marginTop: 8, fontWeight:700, color:'#502080'}}>Suggetions : Try to crack jackpot card !</Text>
         </View>
       </View>
     );
@@ -190,19 +191,23 @@ const HomeScreen = (props) => {
 }
 
 const styles = StyleSheet.create({
-
+  
   circle: {
-    borderWidth: 5,
+    width: 180,
+    height: 180,
     borderRadius: 100,
-    paddingVertical: 18,
-    margin: 20,
-    borderColor: '#FFFFFF'
+    borderWidth: 7,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderColor: '#FFFFFF',
+    margin: 30,
+    marginBottom: 10,
+    backgroundColor: '#8CA1F7',
   },
   timer: {
-    fontSize: 70,
+    fontSize: 75,
     fontWeight: '900',
     color: '#502080',
-    margin: 30,
   },
   topLeft: {
     position: 'absolute',
