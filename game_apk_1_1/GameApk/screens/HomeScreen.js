@@ -30,7 +30,7 @@ const HomeScreen = (props) => {
     }
   }
 
-  const [prev, setPrev] = useState(100)
+  const [prev, setPrev] = useState(99)
 
   const refresh = async () => {
     if (netInfo.isConnected === false) return;
