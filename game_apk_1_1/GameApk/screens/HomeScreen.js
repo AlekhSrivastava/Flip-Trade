@@ -14,7 +14,7 @@ import Reloading from './ReloadingScreen';
 const HomeScreen = (props) => {
   const baseUrl = 'https://fliptradebackend.onrender.com';
   //const baseUrl = 'http://192.168.0.103:3000';
-  
+
   const urlCards = `${baseUrl}/cardStack`;
   const [wholedata, setWholedata] = useState([])
   const fetchCards = async () => {
@@ -172,48 +172,57 @@ const HomeScreen = (props) => {
     return (
       <View style={styles.container}>
         <StatusBar backgroundColor="#50BDD2" barStyle="light-content" />
-        <View style={styles.topLeft}>
-          <Text style={styles.topLeftText}>Coins : {haveBalance}</Text>
-          <Text style={styles.topLeftText}>Cards : {prev}</Text>
+
+        <View style={styles.upper}>
+          <View style={styles.score}>
+            <Text style={styles.scoreText}>Coins : {haveBalance}</Text>
+            <Text style={styles.scoreText}>Cards : {prev}</Text>
+          </View>
+
+          <Button labelStyle={{ fontSize: 15 }} mode='contained' style={styles.cred} onPress={() => props.navigation.replace('User')}>Credentials</Button>
         </View>
-        <Text style={styles.nameText}>Hii, {email}</Text>
-        <Button labelStyle={{ fontSize: 15 }} mode='contained' style={styles.cred} onPress={() => props.navigation.replace('User')}>Credentials</Button>
+
+        <View style={styles.namebox}>
+          <Text style={styles.nameText}>Hii, {email}</Text>
+        </View>
+
+
         <View style={styles.container}>
           <View style={styles.circle}>
             {isButtonDisabled ? <Text style={styles.timer}>GO!!</Text> : <Text style={styles.timer}>{seconds}</Text>}
           </View>
           {renderGrid()}
-          <Text style={{fontSize:12, marginTop: 8, fontWeight:700, color:'#502080'}}>Suggetions : Try to crack jackpot card !</Text>
         </View>
+          <View style={styles.namebox}>
+          <Text style={{ fontSize: 12, margin: 10,marginBottom:20, fontWeight: 700, color: '#502080' }}>Suggetion : Try to crack jackpot card !</Text>
+          </View>
+
       </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  
-  circle: {
-    width: 180,
-    height: 180,
-    borderRadius: 100,
-    borderWidth: 7,
-    justifyContent: 'center',
-    alignItems: 'center',
+  upper: {
+    /* backgroundColor: 'red',
+    borderWidth: 2, */
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: '100%',
+    paddingTop: 20,
+    paddingLeft: 15,
+    paddingRight: 15,
+    paddingBottom: 2,
+  },
+  cred: {
+
+    paddingVertical: 4,
+    backgroundColor: '#2B81F3',
     borderColor: '#FFFFFF',
-    margin: 30,
-    marginBottom: 10,
-    backgroundColor: '#8CA1F7',
+    borderWidth: 2,
+    borderRadius: 20,
   },
-  timer: {
-    fontSize: 75,
-    fontWeight: '900',
-    color: '#502080',
-  },
-  topLeft: {
-    position: 'absolute',
-    top: 20,
-    left: 20,
-    zIndex: 1,
+  score: {
     borderWidth: 2,
     paddingRight: 70,
     paddingLeft: 15,
@@ -222,31 +231,40 @@ const styles = StyleSheet.create({
     borderColor: '#FFFFFF',
     backgroundColor: '#FF5376',
   },
-  topLeftText: {
+  scoreText: {
     fontSize: 15,
     fontWeight: 'bold',
     color: '#FFFFFF',
     marginVertical: 1,
   },
+  namebox:{
+    justifyContent: 'space-between',
+    width: '100%',
+  },
   nameText: {
-    position: 'absolute',
-    top: 70,
-    left: 35,
-    zIndex: 1,
+    marginLeft: 40,
+    marginBottom: 10,
+    marginTop:1,
     fontSize: 23,
     fontWeight: '900',
     color: '#47246A',
   },
-  cred: {
-    position: 'absolute',
-    top: 20,
-    right: 20,
-    zIndex: 1,
-    paddingVertical: 4,
-    backgroundColor: '#2B81F3',
+  circle: {
+    width: 180,
+    height: 180,
+    borderRadius: 100,
+    borderWidth: 7,
+    justifyContent: 'center',
+    alignItems: 'center',
     borderColor: '#FFFFFF',
-    borderWidth: 2,
-    borderRadius: 20,
+    margin: 10,
+    marginBottom: 20,
+    backgroundColor: '#8CA1F7',
+  },
+  timer: {
+    fontSize: 75,
+    fontWeight: '900',
+    color: '#502080',
   },
   container: {
     backgroundColor: '#A9E1EF',
