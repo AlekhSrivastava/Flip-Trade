@@ -98,7 +98,7 @@ const UserScreen = (props) => {
                 </View>
                 <Card style={styles.card}>
                     <Card.Content>
-                        <Title style={styles.title}>{email}'s Credentials</Title>
+                        <Title style={styles.title}>{email}'s  Credentials</Title>
                         <Divider style={styles.divider} />
                         <View style={styles.userData}>
                             <View style={styles.row}>
@@ -115,8 +115,16 @@ const UserScreen = (props) => {
                             </View>
                         </View>
                         <Divider style={styles.divider} />
+
                         <Text style={styles.alert}>{alert}</Text>
+
+                        <View style={styles.row}>
+                        <View style={styles.circle}>
+                            <Text style={styles.timer}>{loan===0 ? '1' : ((balance/loan) * 100)}</Text>
+                        </View>
+                        
                         <Button mode='contained' style={styles.credit} onPress={creditPress}>Credit</Button>
+                        </View>
                     </Card.Content>
                 </Card>
 
@@ -127,6 +135,22 @@ const UserScreen = (props) => {
 };
 
 const styles = StyleSheet.create({
+    circle: {
+        width: 38,
+        height: 38,
+        marginTop: 20,
+        borderRadius: 100,
+        borderWidth: 3,
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderColor: '#23C47E',
+        backgroundColor: '#B4F3D8',
+    },
+    timer: {
+        fontSize: 20,
+        fontWeight: '600',
+        color: '#23C47E',
+    },
     alert: {
         textAlign: 'center',
         color: 'red',

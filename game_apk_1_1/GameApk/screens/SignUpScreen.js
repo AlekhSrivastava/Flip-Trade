@@ -26,7 +26,7 @@ const SignUpScreen = (props) => {
         if (netInfo.isConnected === false) return;
         const url = `${baseUrl}/signup`;
         try {
-            if (email.length < 3) {
+            if (email.length < 3 || email.length >10) {
                 setExist('* Name too short');
                 return;
             }
