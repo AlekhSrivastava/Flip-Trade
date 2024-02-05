@@ -119,11 +119,11 @@ const UserScreen = (props) => {
                         <Text style={styles.alert}>{alert}</Text>
 
                         <View style={styles.row}>
-                        <View style={styles.circle}>
-                            <Text style={styles.timer}>{loan===0 ? '1' : ((balance/loan) * 100)}</Text>
-                        </View>
-                        
-                        <Button mode='contained' style={styles.credit} onPress={creditPress}>Credit</Button>
+                            <View style={styles.circle}>
+                                <Text style={styles.incircle}>{loan === 0 ? '99' : ((balance / loan) * 100)}</Text>
+                            </View>
+
+                            <Button mode='contained' style={styles.credit} onPress={creditPress}>Credit</Button>
                         </View>
                     </Card.Content>
                 </Card>
@@ -146,8 +146,8 @@ const styles = StyleSheet.create({
         borderColor: '#23C47E',
         backgroundColor: '#B4F3D8',
     },
-    timer: {
-        fontSize: 20,
+    incircle: {
+        fontSize: 17,
         fontWeight: '600',
         color: '#23C47E',
     },
