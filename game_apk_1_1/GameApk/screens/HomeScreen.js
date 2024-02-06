@@ -238,12 +238,12 @@ const styles = StyleSheet.create({
     marginVertical: 1,
   },
   namebox:{
+    marginBottom: 10,
     justifyContent: 'space-between',
     width: '100%',
   },
   nameText: {
     marginLeft: 40,
-    marginBottom: 10,
     marginTop:1,
     fontSize: 23,
     fontWeight: '900',
