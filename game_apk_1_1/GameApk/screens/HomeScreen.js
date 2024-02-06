@@ -204,8 +204,6 @@ const HomeScreen = (props) => {
 
 const styles = StyleSheet.create({
   upper: {
-    /* backgroundColor: 'red',
-    borderWidth: 2, */
     flexDirection: 'row',
     justifyContent: 'space-between',
     width: '100%',
