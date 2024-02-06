@@ -193,9 +193,9 @@ const HomeScreen = (props) => {
           </View>
           {renderGrid()}
         </View>
-          <View style={styles.namebox}>
-          <Text style={{ fontSize: 12, margin: 10,marginBottom:20, fontWeight: 700, color: '#502080' }}>Suggetion : Try to crack jackpot card !</Text>
-          </View>
+        <View style={styles.suggest}>
+          <Text style={{ fontSize: 12,marginLeft:10, fontWeight: 700, color: '#502080' }}>Suggetion : Try to crack jackpot card !</Text>
+        </View>
 
       </View>
     );
@@ -203,6 +203,12 @@ const HomeScreen = (props) => {
 }
 
 const styles = StyleSheet.create({
+  suggest:{
+    marginBottom: 5,
+    marginTop: 7,
+    justifyContent: 'space-between',
+    width: '100%',
+  },
   upper: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -235,14 +241,14 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
     marginVertical: 1,
   },
-  namebox:{
-    marginBottom: 10,
+  namebox: {
+    marginBottom: 12,
     justifyContent: 'space-between',
     width: '100%',
   },
   nameText: {
     marginLeft: 40,
-    marginTop:1,
+    marginTop: 1,
     fontSize: 23,
     fontWeight: '900',
     color: '#47246A',
