@@ -25,7 +25,7 @@ const UserScreen = (props) => {
     const creditPress = async () => {
         if (netInfo.isConnected === false) return;
         try {
-            if (balance == 0) {
+            if (balance < 4) {
                 const urlUpdate = `${baseUrl}/upDateCredit`;
                 await axios.patch(urlUpdate, {
                     email: email,
