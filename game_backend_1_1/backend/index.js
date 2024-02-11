@@ -18,9 +18,7 @@ const app = express();
 
 const dbName = 'game';
 mongoose.connect(mUrl, {
-  dbName,
-  useNewUrlParser: true,
-  useUnifiedTopology: true
+  dbName
 });
 
 // call when db connect
